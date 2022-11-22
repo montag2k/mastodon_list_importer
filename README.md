@@ -20,7 +20,7 @@ cd <list importer repo>
 
 # Help listing
 ./list_importer.py --help
-usage: list_importer.py [-h] -s SERVER -u USER -l LIST [-t] csv_input
+usage: list_importer.py [-h] -s SERVER -u USER -l LIST [-i] [-t] csv_input
 
 Import a CSV file into a mastodon list.
 
@@ -31,11 +31,12 @@ optional arguments:
   -h, --help            show this help message and exit
   -s SERVER, --server SERVER
                         Target server
-  -u USER, --user USER  Username
+  -u USER, --user USER  Login name (usually an e-mail address)
   -l LIST, --list LIST  Target list name
+  -i, --ignore_version_check
+                        Ignore the Mastodon server version check (useful for communicating with Mastodon forks like
+                        Hometown which may have a differently formatted version string
   -t, --testing         Test mode. Accounts will not be followed and added to the list, but the list will be
                         created
-
-# Example
-./list_importer -s mastodon.social -u <e-mail address> -l <list name> ./csv_file.csv
 ```
+
