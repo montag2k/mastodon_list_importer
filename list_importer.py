@@ -20,8 +20,10 @@ def main():
     parser.add_argument('-s', '--server', required=True,
                         help='Target server')
     parser.add_argument('-u', '--user', required=True,
-                        help='Username')
+                        help='Login name (usually an e-mail address)')
     parser.add_argument('-l', '--list', help="Target list name", required=True)
+    parser.add_argument('-i', '--ignore_version_check', action="store_true",
+                        help="Ignore the Mastodon server version check (useful for communicating with Mastodon forks like Hometown which may have a differently formatted version string")
     parser.add_argument('-t', '--testing', action="store_true",
                         help="Test mode.  Accounts will not be followed and added to the list, but the list will be created")
     parser.add_argument('csv_input', help="Input CSV file")
@@ -62,9 +64,14 @@ def main():
         )
 
     # To post, create an actual API instance.
+    if args.ignore_version_check:
+        version_check_mode = "none"
+    else:
+        version_check_mode = "created"
 
-    mastodon = Mastodon(access_token = usercred_secret)
 
+    mastodon = Mastodon(access_token = usercred_secret, version_check_mode = version_check_mode)
+        
     # Get a list of accounts that we're already following so that we don't request them again.
     already_following_firstpage = mastodon.account_following(id = mastodon.me().id)
     already_following = mastodon.fetch_remaining(already_following_firstpage)
