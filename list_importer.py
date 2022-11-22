@@ -5,7 +5,7 @@
 # new followers and a new list.
 #
 #
-# Jake Gamage (jgamage@gmail.com)
+# Jake Gamage (@gogobonobo@pdx.social on Mastodon)
 # Heavily relying on the Mastodon.py documentation
 
 import csv
