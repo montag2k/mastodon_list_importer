@@ -10,15 +10,14 @@ Mastodon.py installed from: https://github.com/halcy/Mastodon.py
 
 ## Install/Getting Started
 
-Create a pyenv:
 ```
+# Create a pyenv
 python3 -m venv mastodon_env
 cd mastodon_env
 source bin/activate
 pip3 install Mastodon.py
 cd <list importer repo>
 
-```
 # Help listing
 ./list_importer.py --help
 usage: list_importer.py [-h] -s SERVER -u USER -l LIST [-t] csv_input
@@ -39,5 +38,4 @@ optional arguments:
 
 # Example
 ./list_importer -s mastodon.social -u <e-mail address> -l <list name> ./csv_file.csv
-
 ```
